@@ -62,6 +62,8 @@ class CaptchaDetector:
 
 '''
 
+# working
+
 """CAPTCHA detection for blocked requests."""
 
 import logging
