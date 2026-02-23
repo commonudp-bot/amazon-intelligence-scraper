@@ -28,7 +28,7 @@ async def run():
     # Export files
     exporter.export_json(products, "output/results.json")
     exporter.export_csv(products, "output/results.csv")
-    exporter.export_excel(products, "output/results.xls")  # ✅ NEW
+    exporter.export_excel(products, "output/results.xlsx") # ✅ NEW
 
     print("✅ Export completed!")
     print("📁 Files created:")
