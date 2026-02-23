@@ -24,13 +24,17 @@ async def run():
     os.makedirs("output", exist_ok=True)
 
     exporter = DataExporter()
+
+    # Export files
     exporter.export_json(products, "output/results.json")
     exporter.export_csv(products, "output/results.csv")
+    exporter.export_excel(products, "output/results.xls")  # ✅ NEW
 
     print("✅ Export completed!")
     print("📁 Files created:")
     print("   - output/results.json")
     print("   - output/results.csv")
+    print("   - output/results.xls")  # ✅ NEW
 
 
 if __name__ == "__main__":
