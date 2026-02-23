@@ -121,6 +121,33 @@ amazon-intelligence-scraper/
 
 ---
 
+## 📂 Folder Role Explained (Quick Guide)
+### 🔹 app/ — API Layer
+Handles HTTP requests and exposes scraper functionality via REST endpoints.
+
+## 🔹 scraper/ — Scraping Engine
+Core logic responsible for fetching pages, detecting blocks, and extracting data.
+
+### Orchestrator: Coordinates scraping workflow
+### HTML parsing: Extracts product fields from page content
+### JS-render fallback: Handles dynamic content
+### CAPTCHA detection: Detects blocking responses
+
+## 🔹 network/ — Anti-Blocking Layer
+Manages proxies, headers, retries, and session reuse.
+
+## 🔹 storage/ — Data Layer
+Handles exporting data and database storage.
+
+## 🔹 scripts/ — Automation Layer
+Production scripts for scheduled runs and batch exports.
+
+## 🔹 examples/ — Demo Layer
+Simple scripts showing how to use the library.
+
+## 🔹 output/ — Generated Data
+Stores exported CSV, JSON, and Excel files.
+
 ## ⚙️ Installation
 
 ### Prerequisites
