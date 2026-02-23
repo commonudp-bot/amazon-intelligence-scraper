@@ -65,45 +65,55 @@ Built with scalability, anti-blocking strategies, and API access in mind.
 ```
 amazon-intelligence-scraper/
 │
-├── app/                        # API layer
+├── app/                        # API layer (FastAPI endpoints)
 │   ├── main.py                 # FastAPI entry point
-│   ├── routes.py               # API endpoints
-│   ├── schemas.py              # Request/response models
+│   ├── routes.py               # API route definitions
+│   ├── schemas.py              # Request/response models (Pydantic)
 │
-├── scraper/                    # Scraping logic
-│   ├── amazon_scraper.py       # Orchestrator
-│   ├── parsers.py              # HTML parsing
-│   ├── playwright_fallback.py  # JS-render fallback
-│   ├── captcha_detector.py     # CAPTCHA detection
+├── scraper/                    # Scraping logic (core extraction engine)
+│   ├── amazon_scraper.py       # Orchestrator: coordinates requests, parsing, retries
+│   ├── parsers.py              # HTML parsing: extract product fields from DOM
+│   ├── playwright_fallback.py  # JS-render fallback for dynamic pages
+│   ├── captcha_detector.py     # CAPTCHA detection in responses
 │
-├── network/                    # Request handling
-│   ├── proxy_manager.py        # Proxy rotation
+├── network/                    # Request handling & anti-blocking
+│   ├── proxy_manager.py        # Proxy rotation & management
 │   ├── user_agent.py           # User-agent rotation
-│   ├── retry.py                # Retry with backoff
-│   ├── session.py              # Reusable session config
+│   ├── retry.py                # Retry with exponential backoff
+│   ├── session.py              # Reusable HTTP session configuration
 │
-├── storage/                    # Data persistence
-│   ├── exporter.py             # JSON/CSV export
-│   ├── database.py             # SQLite/PostgreSQL support
+├── storage/                    # Data persistence layer
+│   ├── exporter.py             # JSON/CSV/Excel export utilities
+│   ├── database.py             # SQLite/PostgreSQL integration
 │
 ├── core/                       # Shared utilities
-│   ├── config.py               # Environment config
-│   ├── logger.py               # Logging setup
-│   ├── constants.py            # Selectors/constants
+│   ├── config.py               # Environment & settings loader
+│   ├── logger.py               # Centralized logging setup
+│   ├── constants.py            # Selectors and shared constants
 │
-├── examples/                   # Usage examples
-│   ├── scrape_product.py
-│   ├── scrape_search.py
+├── scripts/                    # Automation scripts (production use)
+│   └── export_products.py      # Export search results to CSV/JSON/XLS
+│
+├── examples/                   # Usage examples (learning & demo)
+│   ├── scrape_product.py       # Example: fetch single product
+│   ├── scrape_search.py        # Example: search and print results
 │
 ├── tests/                      # Unit tests
-│   ├── test_parsers.py
-│   ├── test_scraper.py
+│   ├── __init__.py             # Test package marker
+│   ├── test_parsers.py         # Parser unit tests
+│   ├── test_scraper.py         # Scraper workflow tests
 │
 ├── docker/                     # Deployment configs
 │   ├── Dockerfile
 │   ├── docker-compose.yml
 │
-├── .env.example
+├── output/                     # Generated files (runtime)
+│   ├── results.csv
+│   ├── results.xls
+│   ├── results.json
+│
+├── .env                        # Local runtime configuration
+├── .env.example                # Environment template
 ├── requirements.txt
 ├── README.md
 └── LICENSE
